@@ -1,2 +1,9 @@
 language: node_js
 node_js: node
+deploy: damp-journey-15673
+  provider: heroku
+  api_key:
+    secure: JESF7nlz5a61ncOPQAqQopttPWBewkHCf6x1V9rXRDkN0vf/EFvZBex4yEkRc7sWHbC6yPZDA9+sbOXq41+fkZEImnSOIQNdcgSEmZds9l+ZwkdJRiK7KFv8FYW+++gklkznS868sbMBXOrUHy4e4kIQPjTi5gw7LwUobH7NhpTnncmzgAPNTiQQ5rQUCjvN31IyNYx2pc8J18JmTAj+nBX63F5xiB6/BzHT9VCjmtugS5o23BA0IkpAWhpnwMuKQ4XPCiBfu0AO0iKOO5dwjvT7Xk5cfrRLJVJvbbjVo2WwPs3kThPGYeBuvMPoM+8lspnzzYKL1CtDTdwlN5ukBHUxEmSwFJZBwpE+2SzSiF7ZfX97vVf5h2/Th5+o0bm0c4Z0OzCLksYYIizoMY+dig9J6ne70J6pts2f+X4Nl5ql7yzX9I/NBk7k1+y3+3qwHU0/kgZf1b3tPZMpv1LYUrN7jdwfgccJ4P2B6WBluWCZynRxHJ2LASvnPczLFsfPobFOJhfndzsE/6UpHlGRtvf9suYohDZu7FXe8yh4xIYANpwmJG6DbyvjxXYqcnqtfX0TgcVbd7UbPSi6JRpcfbZEnrQ9v6BWwHmB3+ncU2q0gVGEsHHrrSer/wjPq51UaTZ2ogOVC9nT6z8bfi6zcwZ3ABTkm0sA1L15qK4jIW4=
+  app: blog
+  on:
+    repo: jrvscm/blog

@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 	res.json(BlogPosts.get());
 });
 
-app.post('/', jsonParser, (req, res) => {
+router.post('/', jsonParser, (req, res) => {
 	const requiredFields = ['title', 'content', 'author', 'publishDate'];
 	for (let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -73,11 +73,17 @@ app.post('/', jsonParser, (req, res) => {
 		}
 	}
 
-	const post = BlogPosts.create(req.body.name, req.body.content, req.body.author, req.body.publishDate);
+	const post = BlogPosts.create(req.body.title, req.body.content, req.body.author, req.body.publishDate);
 	res.status(201).json(post);
 });
 
-app.put('/:id', jsonParser, (req,res) => {
+router.delete('/:id', (req, res) => {
+	BlogPosts.delete(req.params.id);
+	console.log(`Deleted blog post \`${req.params.id}\``);
+	res.status(204).end();
+});
+
+router.put('/:id', jsonParser, (req,res) => {
 	const requiredFields = ['id', 'title', 'content', 'author', 'publishDate'];
 	for(let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
@@ -94,7 +100,7 @@ app.put('/:id', jsonParser, (req,res) => {
 		return res.status(400).send(message);
 	}
 	console.log(`Updating blogposts item \`${req.params.id}\``);
-	BlogPosts.update({
+	const updatedPost = BlogPosts.update({
 		id: req.params.id,
 		title: req.body.title,
 		content: req.body.content,
@@ -102,14 +108,6 @@ app.put('/:id', jsonParser, (req,res) => {
 		publishDate: req.body.publishDate
 	});
 	res.status(204).end();
-});
+})
 
-app.delete('/:id', (req, res) => {
-	BlogPosts.delete(req.params.id);
-	console.log(`Deleted blog post \`${req.params.id}\``);
-	res.status(204).end();
-});
-
-app.listen(process.env.PORT || 8080, () => {
-  console.log(`Your app is listening on port ${process.env.PORT || 8080}`);
-});
+module.exports = router;
